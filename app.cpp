@@ -38,19 +38,21 @@
 // 	return 0;
 // }
 
-#include "UPC.h"
-#include <string>
+#include "BST.h"
 #include <iostream>
 using namespace std;
 
 int main()
 {
-	long num = 12345;
-	long num2 = 23445;
-	UPC u(num, NULL, NULL);
-	UPC n(num2, NULL, NULL);
 
-	cout << ((u < n) ? "True" : "False") << endl;
+	BST b;
+	long l1 = 12345;
+	long l2 = 54321;
+
+	b.insert(l1);
+	b.insert(l2);
+
+	cout << b.find(l2).data << endl;
 
 	return 0;
 }

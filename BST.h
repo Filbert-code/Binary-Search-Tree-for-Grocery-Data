@@ -3,11 +3,15 @@
 
 class BST
 {
-private:
-    UPC *root;
 
 public:
     BST() : root(NULL) {}
-    void insert(const UPC &node);
-    UPC &find(const UPC &node);
+    void insert(const long &code);
+    UPC &find(const long &code);
+
+private:
+    UPC *root;
+
+    void insert(const long &code, UPC *&root);
+    UPC *find(const long &code, UPC *&root);
 };
