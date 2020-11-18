@@ -1,17 +1,23 @@
-#include "UPC.h"
+#ifndef BST_H
+#define BST_H
+
+#include "BSTNode.h"
 #include <stddef.h>
 
+template <class T>
 class BST
 {
 
 public:
     BST() : root(NULL) {}
-    void insert(const long &code);
-    UPC &find(const long &code);
+    void insert(T &item);
+    BSTNode<T> &find(T &item);
 
 private:
-    UPC *root;
+    BSTNode<T> *root;
 
-    void insert(const long &code, UPC *&root);
-    UPC *find(const long &code, UPC *&root);
+    void insert(T &item, BSTNode<T> *&root);
+    BSTNode<T> *find(T &item, BSTNode<T> *&root);
 };
+
+#endif

@@ -1,26 +1,40 @@
 #ifndef UPC_H
 #define UPC_H
+#include <string>
+#include <cstdlib>
+using namespace std;
 
 class UPC
 {
-public:
-    long data;
-    UPC *left;
-    UPC *right;
+private:
+    string description;
+    string upc_num;
 
-    UPC(long &key, UPC *lt, UPC *rt) : data(key), left(lt), right(rt) {}
+public:
+    UPC(string numUPC, string descr) : upc_num(numUPC), description(descr) {} // 2-arg constructor
+    UPC(string numUPC)
+    {
+        upc_num = numUPC;
+        description = "";
+    } // 1-arg constructor
+
+    string getUPC() { return upc_num; }
+    string getDescription() { return description; }
 
     bool operator<=(const UPC &lhs)
     {
-        return data <= lhs.data;
+        long long upc_long = stoll(upc_num);
+        return upc_long <= stoll(lhs.upc_num);
     }
     bool operator<(const UPC &lhs)
     {
-        return data < lhs.data;
+        long long upc_long = stoll(upc_num);
+        return upc_long < stoll(lhs.upc_num);
     }
     bool operator==(const UPC &lhs)
     {
-        return data == lhs.data;
+        long long upc_long = stoll(upc_num);
+        return upc_long == stoll(lhs.upc_num);
     }
 };
 

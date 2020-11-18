@@ -1,48 +1,49 @@
 #include "BST.h"
+#include "UPC.h"
 #include <iostream>
 using namespace std;
 
-void BST::insert(const long &code)
+template <class T>
+void BST<T>::insert(T &item)
 {
-    insert(code, root);
+    insert(item, root);
 }
 
-void BST::insert(const long &code, UPC *&root)
+template <class T>
+void BST<T>::insert(T &item, BSTNode<T> *&root)
 {
-    long num = code;
-    UPC *newNode = new UPC(num, NULL, NULL);
     if (root == NULL)
     {
-        root = newNode;
+        root = new BSTNode<T>(item, NULL, NULL);
     }
-    else if (code < root->data)
+    else if (item < root->data)
     {
-        insert(code, root->left);
+        insert(item, root->left);
     }
-    else if (root->data < code)
+    else if (root->data < item)
     {
-        insert(code, root->right);
+        insert(item, root->right);
     }
     else
         cout << "Error inserting the node" << endl;
 }
 
-UPC &BST::find(const long &code)
+template <class T>
+BSTNode<T> &BST<T>::find(T &item)
 {
-    return *find(code, root);
+    return *find(item, root);
 }
 
-UPC *BST::find(const long &code, UPC *&root)
+template <class T>
+BSTNode<T> *BST<T>::find(T &item, BSTNode<T> *&root)
 {
-    long num = code;
-    UPC newNode(num, NULL, NULL);
     while (root != NULL)
     {
-        if (code < root->data)
+        if (item < root->data)
         {
             root = root->left;
         }
-        else if (root->data < code)
+        else if (root->data < item)
         {
             root = root->right;
         }
