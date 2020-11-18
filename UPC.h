@@ -15,9 +15,9 @@ public:
     UPC(string numUPC, string descr) : upc_str(numUPC), description(descr) { upc_long = stoll(upc_str); } // 2-arg constructor
     UPC(long long numUPC)
     {
-        upc_long = numUPC;
-        string upc_str = "";
-        description = "";
+        this->upc_long = numUPC;
+        this->upc_str = "";
+        this->description = "";
     } // 1-arg constructor
 
     string getUPC() { return upc_str; }

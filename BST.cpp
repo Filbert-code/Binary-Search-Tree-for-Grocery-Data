@@ -52,5 +52,6 @@ BSTNode<T> *BST<T>::find(T &item, BSTNode<T> *&root)
             return root;
         }
     }
-    return NULL;
+    BSTNode<T> *node = new BSTNode<T>(0000, NULL, NULL);
+    return node;
 }

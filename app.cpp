@@ -6,6 +6,7 @@
 #include <fstream>
 #include <regex>
 #include <cstdlib>
+#include <time.h>
 using namespace std;
 
 BST<UPC> &buildTree(string filename)
@@ -30,7 +31,19 @@ BST<UPC> &buildTree(string filename)
 void performSearchBST(BST<UPC> bst, UPC key)
 {
 	// searches the binary tree for the item description corresponding to the given UPC value
-	cout << bst.find(key).data.getDescription() << endl;
+	clock_t t;
+	t = clock();
+
+	if (bst.find(key).data.getDescription() == "")
+	{
+		cout << "Not found" << endl;
+	}
+	else
+	{
+		cout << bst.find(key).data.getDescription() << endl;
+		t = clock() - t;
+		cout << "Lookup time: " << t << " milliseconds" << endl;
+	}
 }
 
 int main()
