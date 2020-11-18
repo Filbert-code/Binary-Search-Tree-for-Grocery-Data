@@ -8,33 +8,32 @@ class UPC
 {
 private:
     string description;
-    string upc_num;
+    string upc_str;     // actual UPC code (might have prepending zeros)
+    long long upc_long; // unique UPC code in long-type
 
 public:
-    UPC(string numUPC, string descr) : upc_num(numUPC), description(descr) {} // 2-arg constructor
-    UPC(string numUPC)
+    UPC(string numUPC, string descr) : upc_str(numUPC), description(descr) { upc_long = stoll(upc_str); } // 2-arg constructor
+    UPC(long long numUPC)
     {
-        upc_num = numUPC;
+        upc_long = numUPC;
+        string upc_str = "";
         description = "";
     } // 1-arg constructor
 
-    string getUPC() { return upc_num; }
+    string getUPC() { return upc_str; }
     string getDescription() { return description; }
 
     bool operator<=(const UPC &lhs)
     {
-        long long upc_long = stoll(upc_num);
-        return upc_long <= stoll(lhs.upc_num);
+        return upc_long <= lhs.upc_long;
     }
     bool operator<(const UPC &lhs)
     {
-        long long upc_long = stoll(upc_num);
-        return upc_long < stoll(lhs.upc_num);
+        return upc_long < lhs.upc_long;
     }
     bool operator==(const UPC &lhs)
     {
-        long long upc_long = stoll(upc_num);
-        return upc_long == stoll(lhs.upc_num);
+        return upc_long == lhs.upc_long;
     }
 };
 

@@ -27,83 +27,30 @@ BST<UPC> &buildTree(string filename)
 	return *bst;
 }
 
-long &stol(string code)
-{
-	// convert user inputted string to type long int
-}
-
-void performSearchBST(BST<UPC>, long key)
+void performSearchBST(BST<UPC> bst, UPC key)
 {
 	// searches the binary tree for the item description corresponding to the given UPC value
+	cout << bst.find(key).data.getDescription() << endl;
 }
 
 int main()
 {
-	//...
-	BST<UPC> tree = buildTree("ass5_data.txt"); //build binary search tree of UPC objects
+	string filename = "ass5_data.txt";
+	BST<UPC> tree = buildTree(filename); //build binary search tree of UPC objects
 
-	UPC key("88313590791");
-	cout << tree.find(key).data.getDescription() << endl;
+	string code;
+	cout << "Please enter a UPC code(! to quit): ";
+	cin >> code;
+	while (code != "!")
+	{
 
-	// string code;
-	// cout << "Please enter a UPC code(! to quit): ";
-	// cin >> code;
-	// while (code != "!")
-	// {
+		long long entry = stoll(code); //convert user inputted string to type long int
+		UPC key(entry);
+		performSearchBST(tree, key);
 
-	// 	long entry = stoll(code); //convert user inputted string to type long int
-	// 	//UPC key(entry);
-	// 	//performSearchBST(tree, key);
-
-	// 	cout << "\nPlease enter a UPC code(! to quit): ";
-	// 	cin >> code;
-	// }
+		cout << "\nPlease enter a UPC code(! to quit): ";
+		cin >> code;
+	}
 
 	return 0;
 }
-
-// #include "BST.cpp"
-// #include "UPC.h"
-// #include <iostream>
-// #include <regex>
-// #include <cstdlib>
-// using namespace std;
-
-// int main()
-// {
-
-// 	BST<UPC> b;
-// 	UPC u1("12345", "Eating food is my profession");
-// 	b.insert(u1);
-// 	UPC u2("23456", "I can swim faster than a dolphin");
-// 	UPC u3("1234", "Hello kitty");
-// 	UPC u4("1243", "Chessbrahs");
-
-// 	b.insert(u2);
-// 	b.insert(u3);
-// 	b.insert(u4);
-
-// 	UPC key1("1234");
-
-// 	cout << b.find(key1).data.getDescription() << endl;
-
-// long l3 = 982342342;
-// string l4 = "079400847201";
-// regex str_expr("^[1-9]\\d+$");
-// while (!regex_match(l4, str_expr))
-// {
-// 	l4 = l4.substr(1, l4.length() - 1);
-// }
-// long l5 = 1928;
-// long l6 = 23423;
-
-// b.insert(l1);
-// b.insert(l2);
-// b.insert(l3);
-// long long i = stoll(l4);
-// b.insert(i);
-// b.insert(l5);
-// b.insert(l6);
-
-// 	return 0;
-// }
