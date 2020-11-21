@@ -17,14 +17,14 @@ BST<UPC> &buildTree(string filename)
 	// handles file input and returns the binary search tree
 	BST<UPC> *bst = new BST<UPC>;
 	string line;
-	ifstream file;
-	file.open(filename);
+	ifstream file(filename);
+	getline(file, line); // skip the first line
 	while (getline(file, line))
 	{
 		// insert input into BST
-		int tab_index = line.find("\t");
-		string upc_code = line.substr(0, tab_index);
-		string description = line.substr(tab_index + 1);
+		int comma_index = line.find(",");
+		string upc_code = line.substr(0, comma_index);
+		string description = line.substr(comma_index + 1);
 		UPC upc(upc_code, description);
 		bst->insert(upc);
 	}
@@ -52,7 +52,7 @@ void performSearchBST(BST<UPC> bst, UPC key)
 
 int main()
 {
-	string filename = "ass5_data.txt";
+	string filename = "grocery_upc_database.csv";
 	BST<UPC> tree = buildTree(filename); //build binary search tree of UPC objects
 
 	string code;
