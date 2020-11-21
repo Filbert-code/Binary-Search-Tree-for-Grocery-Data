@@ -1,9 +1,14 @@
+// Author: Alex Filbert
+// Date: 11/19/2020
+// Course: CS 300B
+// Assignment: Homework 5
 #ifndef UPC_H
 #define UPC_H
 #include <string>
 #include <cstdlib>
 using namespace std;
 
+// a class to store the information of each UPC entry in the binary tree
 class UPC
 {
 private:
@@ -20,17 +25,22 @@ public:
         this->description = "";
     } // 1-arg constructor
 
+    // getters
     string getUPC() { return upc_str; }
     string getDescription() { return description; }
 
+    // comparison operators
+    // overloaded <= operator
     bool operator<=(const UPC &lhs)
     {
         return upc_long <= lhs.upc_long;
     }
+    // overloaded < operator
     bool operator<(const UPC &lhs)
     {
         return upc_long < lhs.upc_long;
     }
+    // overloaded == operator
     bool operator==(const UPC &lhs)
     {
         return upc_long == lhs.upc_long;

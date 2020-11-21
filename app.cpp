@@ -1,5 +1,7 @@
-//Started code for Assignment5
-//You are allowed to add, but not remove statements
+// Author: Alex Filbert
+// Date: 11/19/2020
+// Course: CS 300B
+// Assignment: Homework 5
 #include "BST.cpp"
 #include "UPC.h"
 #include <iostream>
@@ -9,6 +11,7 @@
 #include <time.h>
 using namespace std;
 
+// returns a BST object that has the file data
 BST<UPC> &buildTree(string filename)
 {
 	// handles file input and returns the binary search tree
@@ -28,6 +31,7 @@ BST<UPC> &buildTree(string filename)
 	return *bst;
 }
 
+// searches the binary tree for the key argument and keeps track of execution time
 void performSearchBST(BST<UPC> bst, UPC key)
 {
 	// searches the binary tree for the item description corresponding to the given UPC value

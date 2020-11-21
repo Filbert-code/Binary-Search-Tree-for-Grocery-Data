@@ -1,14 +1,20 @@
+// Author: Alex Filbert
+// Date: 11/19/2020
+// Course: CS 300B
+// Assignment: Homework 5
 #include "BST.h"
 #include "UPC.h"
 #include <iostream>
 using namespace std;
 
+// add a new node to the binary tree
 template <class T>
 void BST<T>::insert(T &item)
 {
     insert(item, root);
 }
 
+// insert helper function that inserts the new node
 template <class T>
 void BST<T>::insert(T &item, BSTNode<T> *&root)
 {
@@ -28,12 +34,14 @@ void BST<T>::insert(T &item, BSTNode<T> *&root)
         cout << "Error inserting the node" << endl;
 }
 
+// find and return a node inside the binary tree
 template <class T>
 BSTNode<T> &BST<T>::find(T &item)
 {
     return *find(item, root);
 }
 
+// helper function that helps return a node inside the binary tree
 template <class T>
 BSTNode<T> *BST<T>::find(T &item, BSTNode<T> *&root)
 {
